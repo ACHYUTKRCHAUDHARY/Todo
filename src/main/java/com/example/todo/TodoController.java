@@ -1,6 +1,7 @@
 package com.example.todo;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -24,12 +25,21 @@ public class TodoController {
     public List<Todo>  getTodoList() {
         return todoList;
     }
+//one way of
+//    @PostMapping("/todos")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Todo createTodo(@RequestBody Todo newTodo){
+//        todoList.add(newTodo);
+//        return newTodo;
+//    }
 
+
+//    second way
     @PostMapping("/todos")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Todo createTodo(@RequestBody Todo newTodo){
+    public ResponseEntity<Todo> createTodo(@RequestBody Todo newTodo){
         todoList.add(newTodo);
-        return newTodo;
+        return ResponseEntity.status(HttpStatus.CREATED).body(newTodo);
     }
+
 
 }

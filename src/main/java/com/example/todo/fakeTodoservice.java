@@ -3,7 +3,7 @@ package com.example.todo;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("fakeTodoService")
 public class fakeTodoservice implements TodoService {
     public String doSomething(){
         return "something";
